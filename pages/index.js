@@ -33,7 +33,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div ref={infiniteRef}>
+        <div
+          ref={infiniteRef}
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-around',
+          }}
+        >
           {data?.map((movies) => {
             return movies.data.results.map((movie) => (
               <Link
