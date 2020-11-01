@@ -7,34 +7,20 @@ export const POSTER_PATH = 'https://image.tmdb.org/t/p/w154';
 
 export default function Details() {
   const router = useRouter();
-  const { id } = router.query;
+  const { poster_path, title, release_date, overview } = router.query;
 
-  const { data } = useSWR(
-    'https://api.themoviedb.org/3/movie/' +
-      id +
-      '?api_key=' +
-      'ddc64ae5e8e8de2f777406819ea8ee0f&language=en-US',
-    Axios.get
-  );
-
-  const movie = data ? data.data : undefined;
-
-  if (!movie) {
-    return 'Loading....';
-  }
-
-  return (
+ return (
     <section>
       <Image
-        src={`${POSTER_PATH}${movie.poster_path}`}
-        alt={movie.title}
+        src={`${POSTER_PATH}${poster_path}`}
+        alt={title}
         height={231}
         width={154}
       />
       <div>
-        <h1>{movie.title}</h1>
-        <h3>{movie.release_date}</h3>
-        <p>{movie.overview}</p>
+        <h1>{title}</h1>
+        <h3>{release_date}</h3>
+        <p>{overview}</p>
       </div>
     </section>
   );

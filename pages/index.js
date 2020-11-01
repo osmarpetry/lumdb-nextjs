@@ -36,7 +36,10 @@ export default function Home() {
         <div ref={infiniteRef}>
           {data?.map((movies) => {
             return movies.data.results.map((movie) => (
-              <Link href={`/details?id=${movie.id}`} key={movie.id}>
+              <Link
+                href={`/details?poster_path=${movie.poster_path}&title=${movie.title}&release_date=${movie.release_date}&overview=${movie.overview}`}
+                key={movie.id}
+              >
                 <Image
                   src={`${POSTER_PATH}${movie.poster_path}`}
                   alt={movie.title}
