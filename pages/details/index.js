@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image'
-import useSWR from 'swr';
-import Axios from 'axios';
 
 export const POSTER_PATH = 'https://image.tmdb.org/t/p/w154';
 

@@ -6,6 +6,7 @@ module.exports = withPWA({
     domains: ['image.tmdb.org'],
   },
   pwa: {
-    dest: 'public',
+    disable: process.env.NODE_ENV === 'development',
+    dest: 'public'
   },
 });
