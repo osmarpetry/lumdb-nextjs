@@ -5,7 +5,7 @@ export const POSTER_PATH = 'https://image.tmdb.org/t/p/w154';
 
 export default function Details() {
   const router = useRouter();
-  const { poster_path, title, release_date, overview } = router.query;
+  const { id, poster_path, title, release_date, overview } = router.query;
 
  return (
     <section>
@@ -13,6 +13,7 @@ export default function Details() {
         src={`${POSTER_PATH}${poster_path}`}
         alt={title}
         height={231}
+        key={id}
         width={154}
       />
       <div>

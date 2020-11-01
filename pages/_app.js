@@ -12,27 +12,22 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
-
   a {
     color: inherit;
     text-decoration: none;
+    :hover{
+      text-decoration: underline
+    }
+  }
+  img {
+    :hover {
+    cursor: pointer;
+  }
+}
   }
 
   * {
     box-sizing: border-box;
-  }
-`;
-
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-};
-
-const Nav = styled.nav`
-  margin: 20px 20px;
-  a {
-    font-size: 35px;
   }
 `;
 
@@ -41,16 +36,21 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        {router.pathname !== '/' && (
-          <header>
-            <Nav>
-              <Link href="/">Back</Link>
-            </Nav>
-          </header>
-        )}
-        <Component {...pageProps} />
-      </ThemeProvider>
+      {router.pathname !== '/' && (
+        <header>
+          <Nav>
+            <Link href="/">Back</Link>
+          </Nav>
+        </header>
+      )}
+      <Component {...pageProps} />
     </>
   );
 }
+
+const Nav = styled.nav`
+  margin: 20px 20px;
+  a {
+    font-size: 35px;
+  }
+`;

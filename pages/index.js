@@ -43,7 +43,7 @@ export default function Home() {
           {data?.map((movies) => {
             return movies.data.results.map((movie) => (
               <Link
-                href={`/details?poster_path=${movie.poster_path}&title=${movie.title}&release_date=${movie.release_date}&overview=${movie.overview}`}
+                href={`/details?key=${movie.id}&poster_path=${movie.poster_path}&title=${movie.title}&release_date=${movie.release_date}&overview=${movie.overview}`}
                 key={movie.id}
               >
                 <Image
