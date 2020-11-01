@@ -1,5 +1,5 @@
 module.exports = {
-    target: "serverless",
+    target: "experimental-serverless-trace",
     images: {
         deviceSizes: [320, 640, 768, 1024, 1600],
         domains: ['image.tmdb.org']
