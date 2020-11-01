@@ -45,7 +45,7 @@ export default function MoviesList() {
   );
 }
 
-const MovieGrid = styled.div`
+const MovieGrid = styled.section`
   display: flex;
   width: 100%;
   justify-content: space-evenly;

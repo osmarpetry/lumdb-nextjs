@@ -24,7 +24,7 @@ export default function MovieDetails({ id, backdrop_path, poster_path, title, re
   );
 }
 
-const MovieWrapper = styled.div<{ backdrop: string }>`
+const MovieWrapper = styled.section<{ backdrop: string }>`
   position: relative;
   padding-top: 50vh;
   ${({ backdrop }) =>
