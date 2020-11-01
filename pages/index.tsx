@@ -33,7 +33,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div
-          ref={infiniteRef}
+          ref={infiniteRef as any}
           style={{
             display: 'flex',
             flexWrap: 'wrap',

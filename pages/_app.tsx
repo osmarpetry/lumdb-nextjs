@@ -1,17 +1,18 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   html,
   body {
-    padding: 0;
-    margin: 0;
-    background-color: black;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      padding: 0;
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -19,11 +20,11 @@ const GlobalStyle = createGlobalStyle`
       text-decoration: underline
     }
   }
+
   img {
     :hover {
     cursor: pointer;
-  }
-}
+    }
   }
 
   * {
