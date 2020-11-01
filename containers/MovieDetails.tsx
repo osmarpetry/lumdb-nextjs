@@ -12,8 +12,7 @@ export default function MovieDetails({ id, backdrop_path, poster_path, title, re
           key={id}
           src={`${POSTER_PATH}${poster_path}`}
           alt={title}
-          height={231}
-          width={154}
+          unsized
         />
         <div>
           <h1>{title}</h1>

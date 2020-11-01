@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Head from 'next/head'
+import Head from 'next/head';
 
 import { createGlobalStyle } from 'styled-components';
 
@@ -41,15 +41,15 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="App">
-      <header style={{padding: '30px', width: '100%', textAlign: 'center'}}>
-        <Link href="/">
-          <img src="/logo.svg" className="App-logo" alt="logo" />
-        </Link>
-      </header>
-      <main className="App-main">
-      <Component {...pageProps} />
-      </main>
-    </div>
+        <header style={{ padding: '30px', width: '100%', textAlign: 'center' }}>
+          <Link href="/">
+            <img src="/logo.svg" className="App-logo" alt="logo" />
+          </Link>
+        </header>
+        <main className="App-main">
+          <Component {...pageProps} />
+        </main>
+      </div>
     </>
   );
 }
