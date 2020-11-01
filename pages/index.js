@@ -1,7 +1,30 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import useInfiniteScroll from 'react-infinite-scroll-hook';
+import { useSWRInfinite } from 'swr';
+import Axios from 'axios';
+import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+
+export const POSTER_PATH = 'https://image.tmdb.org/t/p/w154';
 
 export default function Home() {
+  const { data, isValidating, size, setSize } = useSWRInfinite(
+    (index) => [
+      'https://api.themoviedb.org/3/discover/movie?api_key=ddc64ae5e8e8de2f777406819ea8ee0f&language=' +
+        'en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' +
+        index +
+        1,
+    ],
+    Axios.get
+  );
+
+  const infiniteRef = useInfiniteScroll({
+    loading: isValidating,
+    hasNextPage: data?.length ? data[0].data.total_pages !== size : false,
+    onLoadMore: () => setSize(size + 1),
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -10,43 +33,19 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div ref={infiniteRef}>
+          {data?.map((movies) => {
+            return movies.data.results.map((movie) => (
+              <Link href={`/details?id=${movie.id}`} key={movie.id}>
+                <Image
+                  src={`${POSTER_PATH}${movie.poster_path}`}
+                  alt={movie.title}
+                  height={231}
+                  width={154}
+                />
+              </Link>
+            ));
+          })}
         </div>
       </main>
 
@@ -61,5 +60,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }
