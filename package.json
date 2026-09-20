@@ -10,18 +10,18 @@
         "prettier": "prettier --write \"./**/*.{js,jsx,json}\""
     },
     "dependencies": {
-        "axios": "0.21.0",
+        "axios": "0.34.0",
         "next": "10.0.4",
         "next-pwa": "3.1.5",
         "react": "17.0.1",
         "react-dom": "17.0.1",
         "react-infinite-scroll-hook": "4.1.1",
-        "styled-components": "5.2.1",
+        "styled-components": "5.3.11",
         "swr": "0.3.7"
     },
     "devDependencies": {
         "@types/react": "16.9.55",
-        "prettier": "3.9.6",
+        "prettier": "3.9.7",
         "typescript": "4.0.5"
     }
 }
